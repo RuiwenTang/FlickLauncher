@@ -1391,7 +1391,7 @@ public class SettingsActivity extends AppCompatActivity {
             homeKeyPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    if(Utilities.doCheckPROVersion(context)){
+                    if(/*Utilities.doCheckPROVersion(context)*/ false){
 
 
 
@@ -1414,7 +1414,7 @@ public class SettingsActivity extends AppCompatActivity {
             homeLongKeyPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    if(Utilities.doCheckPROVersion(context)){
+                    if(/*Utilities.doCheckPROVersion(context)*/ false){
 
 
 

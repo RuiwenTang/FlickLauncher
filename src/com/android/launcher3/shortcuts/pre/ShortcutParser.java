@@ -108,7 +108,7 @@ public class ShortcutParser {
             shortLabel = "null";
         }
         if (isComponentExported(activity.getComponent())) {
-            mShortcutsList.add(new ShortcutInfoCompat(mPackageName, id, shortLabel, longLabel, mComponentName, activity, Utilities.myUserHandle(), 0, true, disabledMessage, icon));
+            // mShortcutsList.add(new ShortcutInfoCompat(mPackageName, id, shortLabel, longLabel, mComponentName, activity, Utilities.myUserHandle(), 0, true, disabledMessage, icon));
         }
     }
 

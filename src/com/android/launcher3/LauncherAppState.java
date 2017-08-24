@@ -29,6 +29,8 @@ import com.android.launcher3.config.ProviderConfig;
 import com.android.launcher3.dynamicui.ExtractionUtils;
 import com.android.launcher3.logging.FileLog;
 import com.android.launcher3.shortcuts.DeepShortcutManager;
+import com.android.launcher3.shortcuts.DeepShortcutManagerN;
+import com.android.launcher3.shortcuts.DeepShortcutManagerPreN;
 import com.android.launcher3.shortcuts.ShortcutCache;
 import com.android.launcher3.util.ConfigMonitor;
 import com.android.launcher3.util.TestingUtils;
@@ -52,6 +54,7 @@ public class LauncherAppState {
     private static Context sContext;
 
     private static LauncherAppState INSTANCE;
+    private Launcher mLauncher;
 
     private InvariantDeviceProfile mInvariantDeviceProfile;
 
@@ -98,7 +101,7 @@ public class LauncherAppState {
         mInvariantDeviceProfile = new InvariantDeviceProfile(sContext);
         mIconCache = new IconCache(sContext, mInvariantDeviceProfile);
         mWidgetCache = new WidgetPreviewLoader(sContext, mIconCache);
-        mDeepShortcutManager = new DeepShortcutManager(sContext, new ShortcutCache());
+        mDeepShortcutManager = new DeepShortcutManagerPreN(sContext);
 
         mAppFilter = AppFilter.loadByName(sContext.getString(R.string.app_filter_class));
         mModel = new LauncherModel(this, mIconCache, mAppFilter, mDeepShortcutManager);
@@ -158,6 +161,7 @@ public class LauncherAppState {
     LauncherModel setLauncher(Launcher launcher) {
         sLauncherProvider.get().setLauncherProviderChangeListener(launcher);
         mModel.initialize(launcher);
+        mLauncher = launcher;
         return mModel;
     }
 
@@ -175,6 +179,10 @@ public class LauncherAppState {
 
     public DeepShortcutManager getShortcutManager() {
         return mDeepShortcutManager;
+    }
+
+    public Launcher getLauncher() {
+        return mLauncher;
     }
 
     public boolean hasWallpaperChangedSinceLastCheck() {

@@ -162,7 +162,7 @@ public class DeepShortcutsContainer extends LinearLayout implements View.OnLongC
             @Override
             public void run() {
                 final List<ShortcutInfoCompat> shortcuts = ShortcutFilter.sortAndFilterShortcuts(
-                        mDeepShortcutsManager.queryForShortcutsContainer(activity, ids, user));
+                        mDeepShortcutsManager.queryForShortcutsContainer(activity, ids, user.getUser()));
                 // We want the lowest rank to be closest to the user's finger.
                 if (mIsAboveIcon) {
                     Collections.reverse(shortcuts);

@@ -574,9 +574,9 @@ public class Launcher extends Activity
             }
         }
 
-        if(Utilities.doCheckPROVersion(getApplicationContext())) {
-
-        }
+//        if(Utilities.doCheckPROVersion(getApplicationContext())) {
+//
+//        }
     }
 
 
@@ -714,7 +714,7 @@ public class Launcher extends Activity
     }
 
     /**
-     * Invoked by subclasses to signal a change to the {@link #addCustomContentToLeft} value to
+     * Invoked by subclasses to signal a change to the  value to
      * ensure the custom content page is added or removed if necessary.
      */
     protected void invalidateHasCustomContentToLeft() {
@@ -2166,9 +2166,9 @@ public class Launcher extends Activity
         mHandler.removeMessages(0);
         mWorkspace.removeCallbacks(mBuildLayersRunnable);
         mWorkspace.removeFolderListeners();
-        if(mHomeWatcher != null) {
-            mHomeWatcher.stopWatch();
-        }
+//        if(mHomeWatcher != null) {
+//            mHomeWatcher.stopWatch();
+//        }
 
         // Stop callbacks from LauncherModel
         // It's possible to receive onDestroy after a new Launcher activity has
@@ -3017,7 +3017,7 @@ public class Launcher extends Activity
                     String id = ((ShortcutInfo) info).getDeepShortcutId();
                     String packageName = intent.getPackage();
                     LauncherAppState.getInstance().getShortcutManager().startShortcut(
-                            packageName, id, intent.getSourceBounds(), optsBundle, info.user);
+                            packageName, id, intent.getSourceBounds(), optsBundle, info.user.getUser());
                 } else {
                     // Could be launching some bookkeeping activity
                     startActivity(intent, optsBundle);
@@ -3946,9 +3946,9 @@ public class Launcher extends Activity
         if (mHotseat != null) {
             mHotseat.resetLayout();
         }
-        if (LauncherAppState.PROFILE_STARTUP) {
-            Trace.endSection();
-        }
+//        if (LauncherAppState.PROFILE_STARTUP) {
+//            Trace.endSection();
+//        }
     }
 
     @Override

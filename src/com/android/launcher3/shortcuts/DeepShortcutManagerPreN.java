@@ -14,14 +14,14 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.UserHandle;
 
-import com.android.launcher3.compat.UserManagerCompat;
-import com.android.launcher3.shortcuts.pre.ShortcutCache;
+//import com.android.launcher3.compat.UserManagerCompat;
+//import com.android.launcher3.shortcuts.pre.ShortcutCache;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.android.launcher3.shortcuts.ShortcutInfoCompat.INTENT_CATEGORY;
+// import static com.android.launcher3.shortcuts.ShortcutInfoCompat.INTENT_CATEGORY;
 
 
 public class DeepShortcutManagerPreN extends DeepShortcutManager {
@@ -29,7 +29,7 @@ public class DeepShortcutManagerPreN extends DeepShortcutManager {
     private final Context mContext;
     private final LauncherApps mLauncherApps;
     private final boolean mEnableBackport;
-    private ShortcutCache mShortcutCache;
+    // private ShortcutCache mShortcutCache;
 
     public DeepShortcutManagerPreN(Context context) {
         mContext = context;
@@ -70,16 +70,17 @@ public class DeepShortcutManagerPreN extends DeepShortcutManager {
     @Override
     public void startShortcut(String packageName, String shortcutId, Rect sourceBounds, Bundle startActivityOptions, UserHandle user) {
         if (!mEnableBackport) return;
-            ShortcutInfoCompat info = getShortcutCache().getShortcut(packageName, shortcutId);
-            Intent intent = info.makeIntent(mContext);
-            intent.setSourceBounds(sourceBounds);
-            mContext.startActivity(intent);
+//            ShortcutInfoCompat info = getShortcutCache().getShortcut(packageName, shortcutId);
+//            Intent intent = info.makeIntent(mContext);
+//            intent.setSourceBounds(sourceBounds);
+//            mContext.startActivity(intent);
     }
 
     @Override
     public Drawable getShortcutIconDrawable(ShortcutInfoCompat shortcutInfoCompat, int i) {
         if (!mEnableBackport) return null;
-        return shortcutInfoCompat.getIcon();
+//        return shortcutInfoCompat.getIcon();
+        return null;
     }
 
     @Override
@@ -95,14 +96,16 @@ public class DeepShortcutManagerPreN extends DeepShortcutManager {
     @Override
     protected List<ShortcutInfoCompat> query(int flags, String packageName, ComponentName componentName, List<String> shortcutIds, UserHandle userHandle) {
         if (!mEnableBackport) return Collections.emptyList();
-        return getShortcutCache().query(packageName, componentName);
+        // return getShortcutCache().query(packageName, componentName);
+        return Collections.emptyList();
     }
 
     public ShortcutCache getShortcutCache() {
-        if (mShortcutCache == null) {
-            mShortcutCache = new ShortcutCache(mContext, mLauncherApps);
-        }
-        return mShortcutCache;
+//        if (mShortcutCache == null) {
+//            mShortcutCache = new ShortcutCache(mContext, mLauncherApps);
+//        }
+//        return mShortcutCache;
+        return null;
     }
 
     @Override

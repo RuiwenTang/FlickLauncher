@@ -64,7 +64,7 @@ public class BlurWallpaperProvider {
         mContext = context;
 
         mWallpaperManager = WallpaperManager.getInstance(context);
-        sEnabled = mWallpaperManager.getWallpaperInfo() == null && Utilities.isAllowBlurDrawerPrefEnabled(mContext);
+        sEnabled = false;//mWallpaperManager.getWallpaperInfo() == null && Utilities.isAllowBlurDrawerPrefEnabled(mContext);
 
         updateBlurRadius();
     }
@@ -76,9 +76,9 @@ public class BlurWallpaperProvider {
 
     private void updateWallpaper() {
         Launcher launcher = LauncherAppState.getInstance().getLauncher();
-        boolean enabled = mWallpaperManager.getWallpaperInfo() == null && Utilities.isAllowBlurDrawerPrefEnabled(mContext);
+        boolean enabled = false;//mWallpaperManager.getWallpaperInfo() == null && Utilities.isAllowBlurDrawerPrefEnabled(mContext);
         if (enabled != sEnabled) {
-            launcher.scheduleKill();
+            // launcher.scheduleKill();
         }
 
         if (!sEnabled) return;
@@ -92,7 +92,7 @@ public class BlurWallpaperProvider {
         mWallpaper = null;
         mPlaceholder = createPlaceholder(wallpaper.getWidth(), wallpaper.getHeight());
         launcher.runOnUiThread(mNotifyRunnable);
-        if (Utilities.isVibrancyEnabled(mContext)) {
+        if (/*Utilities.isVibrancyEnabled(mContext)*/ false) {
             wallpaper = applyVibrancy(wallpaper, getTintColor());
         }
         mWallpaper = blur(wallpaper);
@@ -284,6 +284,7 @@ public class BlurWallpaperProvider {
     }
 
     public static BlurWallpaperProvider getInstance() {
-        return LauncherAppState.getInstance().getLauncher().getBlurWallpaperProvider();
+        // return LauncherAppState.getInstance().getLauncher().getBlurWallpaperProvider();
+        return null;
     }
 }

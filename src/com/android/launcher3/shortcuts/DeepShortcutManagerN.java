@@ -57,7 +57,7 @@ public class DeepShortcutManagerN extends DeepShortcutManager {
     public void unpinShortcut(ShortcutKey shortcutKey) {
         String packageName = shortcutKey.componentName.getPackageName();
         String id = shortcutKey.getId();
-        UserHandle userHandle = shortcutKey.user;
+        UserHandle userHandle = shortcutKey.user.getUser();
         List<String> extractIds = extractIds(queryForPinnedShortcuts(packageName, userHandle));
         extractIds.remove(id);
         try {
@@ -73,7 +73,7 @@ public class DeepShortcutManagerN extends DeepShortcutManager {
     public void pinShortcut(ShortcutKey shortcutKey) {
         String packageName = shortcutKey.componentName.getPackageName();
         String id = shortcutKey.getId();
-        UserHandle userHandle = shortcutKey.user;
+        UserHandle userHandle = shortcutKey.user.getUser();
         List<String> extractIds = extractIds(queryForPinnedShortcuts(packageName, userHandle));
         extractIds.add(id);
         try {

@@ -1761,7 +1761,7 @@ public class LauncherModel extends BroadcastReceiver
                         // We can only query for shortcuts when the user is unlocked.
                         if (userUnlocked) {
                             List<ShortcutInfoCompat> pinnedShortcuts =
-                                    mDeepShortcutManager.queryForPinnedShortcuts(null, user);
+                                    mDeepShortcutManager.queryForPinnedShortcuts(null, user.getUser());
                             if (mDeepShortcutManager.wasLastCallSuccess()) {
                                 for (ShortcutInfoCompat shortcut : pinnedShortcuts) {
                                     shortcutKeyToPinnedShortcuts.put(ShortcutKey.fromInfo(shortcut),
@@ -2830,7 +2830,7 @@ public class LauncherModel extends BroadcastReceiver
                     for (UserHandleCompat user : mUserManager.getUserProfiles()) {
                         if (mUserManager.isUserUnlocked(user)) {
                             List<ShortcutInfoCompat> shortcuts = mDeepShortcutManager
-                                    .queryForAllShortcuts(user);
+                                    .queryForAllShortcuts(user.getUser());
                             updateDeepShortcutMap(null, user, shortcuts);
                         }
                     }
@@ -3403,7 +3403,7 @@ public class LauncherModel extends BroadcastReceiver
             if (!idsToWorkspaceShortcutInfos.isEmpty()) {
                 // Update the workspace to reflect the changes to updated shortcuts residing on it.
                 List<ShortcutInfoCompat> shortcuts = mDeepShortcutManager.queryForFullDetails(
-                        mPackageName, new ArrayList<>(idsToWorkspaceShortcutInfos.keySet()), mUser);
+                        mPackageName, new ArrayList<>(idsToWorkspaceShortcutInfos.keySet()), mUser.getUser());
                 for (ShortcutInfoCompat fullDetails : shortcuts) {
                     List<ShortcutInfo> shortcutInfos = idsToWorkspaceShortcutInfos
                             .remove(fullDetails.getId());
@@ -3462,7 +3462,7 @@ public class LauncherModel extends BroadcastReceiver
             HashMap<ShortcutKey, ShortcutInfoCompat> pinnedShortcuts = new HashMap<>();
             if (isUserUnlocked) {
                 List<ShortcutInfoCompat> shortcuts =
-                        mDeepShortcutManager.queryForPinnedShortcuts(null, mUser);
+                        mDeepShortcutManager.queryForPinnedShortcuts(null, mUser.getUser());
                 if (mDeepShortcutManager.wasLastCallSuccess()) {
                     for (ShortcutInfoCompat shortcut : shortcuts) {
                         pinnedShortcuts.put(ShortcutKey.fromInfo(shortcut), shortcut);
@@ -3513,7 +3513,7 @@ public class LauncherModel extends BroadcastReceiver
             }
 
             if (isUserUnlocked) {
-                updateDeepShortcutMap(null, mUser, mDeepShortcutManager.queryForAllShortcuts(mUser));
+                updateDeepShortcutMap(null, mUser, mDeepShortcutManager.queryForAllShortcuts(mUser.getUser()));
             }
             bindDeepShortcuts();
         }

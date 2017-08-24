@@ -187,4 +187,6 @@
     <!-- Approximates the system status bar height. Not guaranteed to be always be correct. -->
     <dimen name="status_bar_height">24dp</dimen>
 
+    <dimen name="wallpaperThumbnailWidth">24dp</dimen>
+    <dimen name="wallpaperThumbnailHeight">24dp</dimen>
 </resources>
