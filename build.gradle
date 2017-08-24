@@ -22,7 +22,7 @@ allprojects {
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    buildToolsVersion '26.0.1'
 
 
     lintOptions {
@@ -31,7 +31,7 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 21
         targetSdkVersion 25
         versionCode 100
         versionName "0.1.0"
@@ -58,7 +58,10 @@ android {
     sourceSets {
         main {
             res.srcDirs = ['res']
-            java.srcDirs = ['src', 'src_config']
+            java {
+                srcDirs = ['src', 'src_config']
+                exclude '**/wallpaperpicker/*'
+            }
             manifest.srcFile 'AndroidManifest-common.xml'
             proto.srcDirs 'protos/'
         }
