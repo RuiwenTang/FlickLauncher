@@ -401,8 +401,17 @@
     <string name="allow_voice_search_bar">语音搜索图标</string>
     <string name="allow_voice_search_bar_summary">在搜索栏中显示语音搜索图标</string>
     <string name="preferences_searchbar_option">搜索栏</string>
-
-
+    <string name="allow_night">开启夜间模式</string>
+    <string name="allow_night_summary">启用夜间模式主题</string>
+    <string name="drawer_background">应用抽屉背景</string>
+    <string name="drawer_background_summary">更改应用抽屉背景颜色</string>
+    <string name="allow_notification_count">在应用图标上显示通知</string>
+    <string name="allow_notification_count_summary">允许在应用图标上显示通知数量</string>
+    <string name="preferences_icon_pack_option">图标</string>
+    <string name="icon_pack">图标主题</string>
+    <string name="icon_pack_summary">选择图标主题： Flick Launcher</string>
+    <string name="icon_size">图标大小</string>
+    <string name="icon_size_summary">更改应用图标大小</string>
 
     <string name="license_dialog_message"><a href="https://github.com/QuadFlask/colorpicker">colorpicker</a>\n\n
     Copyright 2014-2017 QuadFlask\n\n
